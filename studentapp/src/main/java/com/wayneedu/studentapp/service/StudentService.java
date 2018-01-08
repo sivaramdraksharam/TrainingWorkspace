@@ -1,13 +1,13 @@
 package com.wayneedu.studentapp.service;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeSet;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.wayneedu.studentapp.DataStore;
@@ -24,9 +24,8 @@ public class StudentService {
 		return instance;
 	}
 	
-	public  boolean insertStudent(String name, int age, double mark) {
-		long newId = StudentDao.getLastStudentId()+1;
-		Student student = new Student(newId, name, age, mark);
+	public  boolean insertStudent(String name, Date dob, double mark) {
+		Student student = new Student(name, dob, mark);
 		StudentDao.addStudent(student);
 		return true;
 	}
@@ -36,12 +35,12 @@ public class StudentService {
 		return (student!=null);
 	}
 
-	public void updateStudentDetail(long id, String name, int age, double mark) {
+	public void updateStudentDetail(long id, String name, Date dob, double mark) throws ParseException {
 		Student student = StudentDao.getStudentById(id);
 		if(!name.isEmpty())
 			student.setName(name);
-		if(age!=0)
-			student.setAge(age);
+		if(dob!=null)
+			student.setAge(dob);
 		if(mark!=0)
 			student.setMark(mark);
 		
@@ -65,10 +64,7 @@ public class StudentService {
 		Collection<Student> studentList = DataStore.getAllStudent().values();
 		
 		List<Student> sortedList = new ArrayList<>(studentList);
-		Collections.sort(sortedList, comparator);
-		/*TreeSet sortedList = new TreeSet(comparator);
-		sortedList.addAll(studentList);*/
-		
+		Collections.sort(sortedList, comparator);		
 		for (Object object : sortedList) {
 			System.out.println(object);
 		}
