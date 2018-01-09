@@ -1,6 +1,7 @@
 package com.brucecorp.bank.jobs;
 
 import com.brucecorp.bank.constants.TransferType;
+import com.brucecorp.bank.exception.TransactionFailureException;
 import com.brucecorp.bank.model.Account;
 
 public class CashTransfer implements Runnable {
@@ -21,7 +22,12 @@ public class CashTransfer implements Runnable {
 		if(txnType.equals(TransferType.CREDIT)){
 			sourceAccount.makeDeposit(amount);
 		}else if (txnType.equals(TransferType.DEBIT)) {
-			sourceAccount.makeWithdrawl(amount);
+			try {
+				sourceAccount.makeWithdrawl(amount);
+			} catch (TransactionFailureException e) {
+				System.out.println("Cash Withdrawl from "+sourceAccount.getAccountNo() +" failed due to "+e.getMessage());
+				
+			}
 		}
 	}
 

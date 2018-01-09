@@ -1,5 +1,6 @@
 package com.brucecorp.bank.jobs;
 
+import com.brucecorp.bank.exception.TransactionFailureException;
 import com.brucecorp.bank.model.Account;
 
 public class AccountTransfer implements Runnable {
@@ -19,7 +20,11 @@ public class AccountTransfer implements Runnable {
 	@Override
 	public void run() {
 		// withdraw from the source Account
-		sourceAccount.makeWithdrawl(amount);
+		try {
+			sourceAccount.makeWithdrawl(amount);
+		} catch (TransactionFailureException e) {
+			System.out.println("Transfer from "+sourceAccount.getAccountNo() +" to "+ beneAccount.getAccountNo() +" failed due to "+e.getMessage()); 
+		}
 
 		// deposit to the source account
 		beneAccount.makeDeposit(amount);

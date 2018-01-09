@@ -13,7 +13,7 @@ public class TransactionService {
 	
 	public static TransactionService getInstance() {
 		if (instance == null) {
-			synchronized (instance) {
+			synchronized (TransactionService.class) {
 				instance = new TransactionService();
 			}
 		}

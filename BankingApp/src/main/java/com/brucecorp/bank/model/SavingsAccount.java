@@ -1,5 +1,7 @@
 package com.brucecorp.bank.model;
 
+import com.brucecorp.bank.exception.TransactionFailureException;
+
 public class SavingsAccount extends Account{
 	
 	public SavingsAccount(String accountNo, Customer accountHolder,double accountBalance, double intrest) {
@@ -24,14 +26,15 @@ public class SavingsAccount extends Account{
 	}
 
 	@Override
-	public synchronized void makeWithdrawl(double amount) {
+	public synchronized void makeWithdrawl(double amount) throws TransactionFailureException {
 		if(amount<= accountBalance){
 			double availBalance = accountBalance -amount; 
 			
 			if(availBalance>MIN_BALANCE)
 				accountBalance =  accountBalance -amount; 
 		}else{
-			System.out.println("Error: Insufficient Balance in Account ");
+			//System.out.println("Error: Insufficient Balance in Account ");
+			throw new TransactionFailureException("Insufficient Balance in Account");
 		}
 		
 	}

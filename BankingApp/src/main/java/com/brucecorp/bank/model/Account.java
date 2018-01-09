@@ -1,5 +1,7 @@
 package com.brucecorp.bank.model;
 
+import com.brucecorp.bank.exception.TransactionFailureException;
+
 public abstract class Account {
 	private String accountNo;
 	private Customer accountHolder;
@@ -39,7 +41,7 @@ public abstract class Account {
 		this.accountBalance = accountBalance;
 	}
 	
-	public abstract  void makeWithdrawl(double amount);
+	public abstract  void makeWithdrawl(double amount) throws TransactionFailureException;
 /*	public synchronized void makeWithdrawl(double amount){
 		if(amount<= accountBalance){
 			accountBalance = accountBalance -amount; 
