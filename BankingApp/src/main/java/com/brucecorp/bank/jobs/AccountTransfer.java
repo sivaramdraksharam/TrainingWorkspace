@@ -22,12 +22,15 @@ public class AccountTransfer implements Runnable {
 		// withdraw from the source Account
 		try {
 			sourceAccount.makeWithdrawl(amount);
+			beneAccount.makeDeposit(amount);
+
 		} catch (TransactionFailureException e) {
-			System.out.println("Transfer from "+sourceAccount.getAccountNo() +" to "+ beneAccount.getAccountNo() +" failed due to "+e.getMessage()); 
+			System.out.println("Thread -" + Thread.currentThread().getName()
+					+ "transfer from " + sourceAccount.getAccountNo() + " to "
+					+ beneAccount.getAccountNo() + " failed due to "
+					+ e.getMessage());
 		}
 
-		// deposit to the source account
-		beneAccount.makeDeposit(amount);
 	}
 
 }

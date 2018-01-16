@@ -1,19 +1,16 @@
 package com.brucecorp.bank.model;
 
+import com.brucecorp.bank.constants.AccountType;
 import com.brucecorp.bank.exception.TransactionFailureException;
 
 public abstract class Account {
-	private String accountNo;
-	private Customer accountHolder;
-	protected double accountBalance;  
 
-	
-	
-	public Account(String accountNo, Customer accountHolder,
-			double accountBalance) {
+	protected String accountNo;
+	protected double accountBalance;
+
+	public Account(String accountNo, double accountBalance) {
 		super();
 		this.accountNo = accountNo;
-		this.accountHolder = accountHolder;
 		this.accountBalance = accountBalance;
 	}
 
@@ -25,33 +22,30 @@ public abstract class Account {
 		this.accountNo = accountNo;
 	}
 
-	public Customer getAccountHolder() {
-		return accountHolder;
-	}
-
-	public void setAccountHolder(Customer accountHolder) {
-		this.accountHolder = accountHolder;
-	}
-
-	public double getAccountBalance() {
+	public synchronized double getAccountBalance() {
 		return accountBalance;
 	}
 
 	public void setAccountBalance(double accountBalance) {
 		this.accountBalance = accountBalance;
 	}
+
+	public abstract void makeWithdrawl(double amount)
+			throws TransactionFailureException;
+
+	public synchronized void makeDeposit(double amount) {
+		System.out.println("Cash of Rs." + amount
+				+ " credited in the "+accountNo +"account by thread:"
+				+ Thread.currentThread().getName());
+		accountBalance += amount;
+	}
 	
-	public abstract  void makeWithdrawl(double amount) throws TransactionFailureException;
-/*	public synchronized void makeWithdrawl(double amount){
-		if(amount<= accountBalance){
-			accountBalance = accountBalance -amount; 
-		}else{
-			System.out.println("Error: Insufficient Balance in Account ");
-		}
-	}*/
-	
-	public void makeDeposit(double amount){
-		accountBalance +=amount;
+	public abstract AccountType  getAccountType();
+
+	@Override
+	public String toString() {
+		return "Account [accountNo=" + accountNo + ", accountBalance="
+				+ accountBalance + "]";
 	}
 
 }

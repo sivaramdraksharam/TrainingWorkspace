@@ -24,8 +24,9 @@ public class CashTransfer implements Runnable {
 		}else if (txnType.equals(TransferType.DEBIT)) {
 			try {
 				sourceAccount.makeWithdrawl(amount);
+				System.out.println("Run - Cash of Rs."+amount+" Withdrawl from "+sourceAccount.getAccountNo()+" by thread: "+Thread.currentThread().getName());
 			} catch (TransactionFailureException e) {
-				System.out.println("Cash Withdrawl from "+sourceAccount.getAccountNo() +" failed due to "+e.getMessage());
+				System.out.println("Thread -"+Thread.currentThread().getName()+" :Cash Withdrawl from "+sourceAccount.getAccountNo() +" failed due to "+e.getMessage());
 				
 			}
 		}
