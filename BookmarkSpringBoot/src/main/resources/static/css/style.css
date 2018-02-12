@@ -1,0 +1,10 @@
+/* Empty. Add your own CSS if you like */
+.dash-title {
+	background: grey;
+    color: white;
+}
+
+.tile-img{
+	height: 100px;
+    width: 75px!important;
+}

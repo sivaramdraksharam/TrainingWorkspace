@@ -1,0 +1,52 @@
+<ion-view view-title="Bookmark List">
+  <ion-content>
+<!-- 		<div class="list" ng-if="list.type=='books'">
+			<a class="item item-thumbnail-left" ng-repeat="book in list.bookmarkList">
+				<img src="https://images.gr-assets.com/books/1475850110l/31425208.jpg">
+				<h2>{{book.title}}</h2>
+				<p>Genre :{{book.genre}}</p>
+				<p>Author :{{book.author}}</p>
+				<p>Rating :{{book.amazonRating}}</p>
+				
+			</a>
+		</div> -->
+		
+		<ion-list ng-if="list.type=='books'">
+			<ion-item class="item-thumbnail-left" ng-repeat="book in list.bookmarkList">
+				<img src="https://images.gr-assets.com/books/1475850110l/31425208.jpg">
+				<h2>{{book.title}}</h2>
+				<p>Genre :{{book.genre}}</p>
+				<p>Author :{{book.author}}</p>
+				<p>Rating :{{book.amazonRating}}</p>
+				<ion-option-button ng-if = "list.sessionData.sessionAlive" class="button-assertive icon ion-bookmark" ng-click="saveBookmark(book.id)"></ion-option-button>
+                <ion-option-button ng-if = "list.sessionData.sessionAlive" class="button-assertive icon ion-person" ng-click="markKidFriendly(book.id)"></ion-option-button>                        	
+                <ion-option-button ng-if = "list.sessionData.sessionAlive" class="button-assertive icon ion-android-share-alt" ng-click="shareBookmark(book.id)"></ion-option-button>                        	
+			</ion-item>
+		</ion-list>
+		
+		<div class="list" ng-if="list.type=='movies'">
+			<a class="item item-thumbnail-left" ng-repeat="book in list.bookmarkList">
+				<img src="https://images.gr-assets.com/books/1475850110l/31425208.jpg">
+				<h2>{{book.title}}</h2>
+				<p>Genre : {{book.genre}}</p>
+				<p>Cast : {{book.cast}}</p>
+				<p>Director(s) :{{book.directors}}</p>
+				<p>Rating :{{book.imdbRating}}</p>				
+			</a>
+		</div>	
+
+		<!-- <div class="list card col" style= "height:10%" ng-repeat="book in list.bookmarkList">
+				<div class="item">
+					<h2>{{book.title}}</h2>
+				</div>
+				<div class="item item-image">
+					<img class="tile-img" src="https://images.gr-assets.com/books/1475850110l/31425208.jpg">
+				</div>
+
+				<a class="item item-icon-left assertive" ng-click="saveBookmark(book.id)">
+					<i class="icon ion-bookmark"></i>
+					Book mark
+				</a>
+		</div> -->
+  </ion-content>
+</ion-view>

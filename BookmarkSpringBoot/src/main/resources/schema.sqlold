@@ -1,0 +1,63 @@
+CREATE TABLE Users
+(
+    id int NOT NULL,
+    firstname varchar(100) NOT NULL,
+    lastname varchar(100) NOT NULL ,
+    password varchar(100) NOT NULL,
+    gender varchar(100) NOT NULL,    
+    email varchar(100) NOT NULL,
+    userType varchar(100) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+
+CREATE TABLE Bookmark
+(
+    id int NOT NULL,
+    title varchar(100) NOT NULL,
+    profileurl varchar(100) NOT NULL,
+    kidfriendlystatus varchar(100) NOT NULL,
+    kidfriendlymarkedby int NOT NULL default 1,
+    sharedbyuser int NOT NULL default 1,
+    PRIMARY KEY (id)
+);
+
+
+CREATE TABLE Books
+(
+    id int NOT NULL,
+ --   title varchar(100) NOT NULL,
+    publicationyear int NOT NULL,
+    publisher varchar(100) NOT NULL ,
+    author varchar(100) NOT NULL ,
+    genre varchar(100) NOT NULL ,
+    amazonrating DOUBLE NOT NULL,    
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE Movies
+(
+    id int NOT NULL,
+    releaseYear int NOT NULL,
+    cast varchar(100) NOT NULL ,    
+    directors varchar(100) NOT NULL ,    
+    genre varchar(100) NOT NULL ,
+    imdbRating DOUBLE NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE Weblinks
+(
+    id int NOT NULL,
+    url varchar(250) NOT NULL , 
+    host varchar(100) NOT NULL , 
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE Userbookmark
+(
+    userid int NOT NULL,
+    bookmarkid int NOT NULL , 
+ 	-- groupname varchar(100) NOT NULL , 
+    PRIMARY KEY (userid,bookmarkid)
+);
