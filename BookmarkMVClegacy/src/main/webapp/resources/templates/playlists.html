@@ -1,0 +1,54 @@
+<ion-view view-title="Dash Board">
+  <ion-content>
+		<div class="row" >
+			<div class="col dash-title" ng-if="$root.session.isAlive"  style="text-align: right;">Welcome, {{$root.session.username}}</div>
+		</div>	
+		<div class="row" >
+			<div class="col dash-title"> Recent Bookmarks</div>
+		</div>
+		<div class="row">
+			<div class="col">Books</div>
+			<div class="col">
+				<button class="button button-small" style="float:right" ng-click="browse('books')">Browse</button>
+			</div>
+		</div>	
+		<div class="row">
+			<div class="list card col" style= "height:10%" ng-repeat="book in dashData.books">
+				<div class="item">
+					<h2>{{book.title}}</h2>
+				</div>
+				<div class="item item-image">
+					<img class="tile-img" ng-src="{{book.profileUrl}}">
+				</div>
+
+				<a class="item item-icon-left assertive" ng-click="saveBookmark(book.id)">
+					<i class="icon ion-bookmark"></i>
+					Book mark
+				</a>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col">Movie</div>
+			<div class="col">
+				<button class="button button-small" style="float:right" ng-click="browse('movies')">Browse</button>
+			</div>
+		</div>	
+		<div class="row">
+			<div class="list card col" style= "height:10%" ng-repeat="book in dashData.movies">
+				<div class="item">
+					<h2>{{book.title}}</h2>
+				</div>
+				<div class="item item-image">
+					<img class="tile-img" ng-src="{{book.profileUrl}}">
+				</div>
+
+				<a class="item item-icon-left assertive" href="#">
+					<i class="icon ion-music-note"></i>
+					Book mark
+				</a>
+			</div>
+		</div>
+		
+  </ion-content>
+</ion-view>
