@@ -8,5 +8,9 @@ class InventoryItems {
 	String itemName;
 	BigDecimal price;
 	int availableQty
-	
+
+	InventoryItems plus(InventoryItems item) {
+		return new InventoryItems(itemId:this.itemId,itemName:this.itemName,
+		price:this.price,availableQty:this.availableQty+item.availableQty)
+	}
 }

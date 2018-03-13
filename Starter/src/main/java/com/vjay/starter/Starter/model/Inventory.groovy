@@ -8,6 +8,6 @@ class Inventory {
 	//String itemId;
 	
 	long batchId;
-	int availableQty;
+	int availableQty
 	ShopItem item
 }

@@ -8,14 +8,17 @@ create table student
 
 create table shipment
 (
-	batchid int not null,
-	shipmentDate date not null, 
-	renewalDate date not null
+	batchid int not null auto_increment,
+	shipmentDate TIMESTAMP not null, 
+	renewalDate TIMESTAMP not null,
+	quantity int not null,
+	status int not null,
+	primary key(batchid)
 );
 
 create table inventory
 (
-	serialno int not null,
+	serialno int not null auto_increment,
 	itemid	varchar(30) not null,
 	batchId int not null,
 	availableqty int not null,
