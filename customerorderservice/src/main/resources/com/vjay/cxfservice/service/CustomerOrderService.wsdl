@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://cxfservice.vjay.com/CustomerOrderService/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	name="CustomerOrderService" targetNamespace="http://cxfservice.vjay.com/CustomerOrderService/"
+	xmlns:order="http://customerorder.vjay.com/Order">
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://cxfservice.vjay.com/CustomerOrderService/">
+			<xsd:import namespace="http://customerorder.vjay.com/Order"
+				schemaLocation="../model/Order.xsd" />
+
+		</xsd:schema>
+	</wsdl:types>
+
+	<wsdl:message name="GetCustomerOrderRequest">
+		<wsdl:part element="order:GetCustomerOrderRequest" name="request" />
+	</wsdl:message>
+	<wsdl:message name="GetCustomerOrderResponse">
+		<wsdl:part element="order:GetCustomerOrderResponse" name="response" />
+	</wsdl:message>
+
+	<wsdl:message name="GetOrderRequest">
+		<wsdl:part element="order:GetOrderRequest" name="orderrequest" />
+	</wsdl:message>
+	<wsdl:message name="GetOrderResponse">
+		<wsdl:part element="order:GetOrderResponse" name="response" />
+	</wsdl:message>
+	<wsdl:message name="AddOrderRequest">
+		<wsdl:part name="order" element="order:AddOrderRequest"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="AddOrderResponse">
+		<wsdl:part name="response" element="order:AddOrderResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="DeleteOrderLineRequest">
+		<wsdl:part name="request" element="order:DeleteOrderLineRequest" />
+	</wsdl:message>
+	<wsdl:message name="DeleteOrderLineResponse">
+		<wsdl:part name="response" element="order:DeleteOrderLineResponse" />
+	</wsdl:message>
+	
+	<wsdl:message name="DeleteOrderRequest">
+		<wsdl:part name="request" element="order:DeleteOrderRequest" />
+	</wsdl:message>
+	<wsdl:message name="DeleteOrderResponse">
+		<wsdl:part name="response" element="order:DeleteOrderResponse" />
+	</wsdl:message>
+
+
+	<wsdl:portType name="CustomerOrderService">
+		<wsdl:operation name="getCustomerOrder">
+			<wsdl:input message="tns:GetCustomerOrderRequest" />
+			<wsdl:output message="tns:GetCustomerOrderResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="getOrder">
+			<wsdl:input message="tns:GetOrderRequest" />
+			<wsdl:output message="tns:GetOrderResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="addOrder">
+			<wsdl:input message="tns:AddOrderRequest" />
+			<wsdl:output message="tns:AddOrderResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="deleteOrderLine">
+			<wsdl:input message="tns:DeleteOrderLineRequest" />
+			<wsdl:output message="tns:DeleteOrderLineResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="deleteOrder">
+			<wsdl:input message="tns:DeleteOrderRequest" />
+			<wsdl:output message="tns:DeleteOrderResponse" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="CustomerOrderServiceSOAP" type="tns:CustomerOrderService">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="getOrder">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="addOrder">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getCustomerOrder">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="deleteOrderLine">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="deleteOrder">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="CustomerOrderService">
+		<wsdl:port binding="tns:CustomerOrderServiceSOAP" name="CustomerOrderServiceSOAP">
+			<soap:address location="http://localhost:8080/services/customerorderservice" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>
