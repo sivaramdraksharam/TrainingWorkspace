@@ -33,21 +33,6 @@ class OrderDaoImpl implements OrderDao{
 	@Override
 	public int addOrder(EOrder order) {
 		Session session = sessionFactory.getCurrentSession()
-		/*EProduct prd1 = new EProduct();
-		 prd1.unit = Unit.NUMBER;
-		 prd1.manufacturer = "Some manufacturor"
-		 prd1.prdId = "PRD001" 
-		 prd1.productName = "Some name"
-		 prd1.unitListprice = 10.00
-		 EOrderLine orderline1 = new EOrderLine();
-		 orderline1.product = prd1
-		 orderline1.quantity = 10
-		 orderline1.unitSaleprice = 9.75
-		 //orderline1.lineId = lineid
-		 EOrder orderobj = new EOrder();
-		 orderobj.customerId = 1000
-		 orderobj.eorderLines<<orderline1*/ 
-
 		Integer orderid =session.save(order)
 		order.eorderLines.each{
 			Integer lineid = (Integer)session.save(it);

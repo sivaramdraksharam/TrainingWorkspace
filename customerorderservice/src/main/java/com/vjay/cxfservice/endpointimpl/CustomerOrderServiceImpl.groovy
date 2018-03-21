@@ -1,5 +1,7 @@
 package com.vjay.cxfservice.endpointimpl
 
+import javax.jws.HandlerChain
+
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 
@@ -24,6 +26,7 @@ import com.vjay.cxfservice.entity.EOrderLine
 import com.vjay.cxfservice.entity.EProduct
 
 @Component
+@HandlerChain(file="handler-chain.xml")
 class CustomerOrderServiceImpl implements CustomerOrderService {
 	
 	@Autowired
