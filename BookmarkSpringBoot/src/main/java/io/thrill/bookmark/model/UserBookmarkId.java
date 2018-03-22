@@ -3,7 +3,6 @@ package io.thrill.bookmark.model;
 import java.io.Serializable;
 
 import javax.persistence.Column;
-import javax.persistence.Embeddable;
 
 //@Embeddable
 public class UserBookmarkId implements Serializable {

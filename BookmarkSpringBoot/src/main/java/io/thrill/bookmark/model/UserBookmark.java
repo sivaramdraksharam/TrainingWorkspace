@@ -2,8 +2,6 @@ package io.thrill.bookmark.model;
 
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.Table;
 
 //@Entity
 //@Table(name="Userbookmark")

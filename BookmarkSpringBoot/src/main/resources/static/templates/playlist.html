@@ -13,7 +13,7 @@
 		
 		<ion-list ng-if="list.type=='books'">
 			<ion-item class="item-thumbnail-left" ng-repeat="book in list.bookmarkList">
-				<img src="https://images.gr-assets.com/books/1475850110l/31425208.jpg">
+				<img ng-src="{{book.profileUrl}}">
 				<h2>{{book.title}}</h2>
 				<p>Genre :{{book.genre}}</p>
 				<p>Author :{{book.author}}</p>
@@ -26,7 +26,7 @@
 		
 		<div class="list" ng-if="list.type=='movies'">
 			<a class="item item-thumbnail-left" ng-repeat="book in list.bookmarkList">
-				<img src="https://images.gr-assets.com/books/1475850110l/31425208.jpg">
+				<img ng-src="{{book.profileUrl}}">
 				<h2>{{book.title}}</h2>
 				<p>Genre : {{book.genre}}</p>
 				<p>Cast : {{book.cast}}</p>
